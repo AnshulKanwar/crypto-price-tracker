@@ -2,9 +2,14 @@ use clap::Parser;
 
 use crypto_price_tracker::Client;
 
-#[derive(Parser, Debug)]
+#[derive(Parser)]
+#[clap(version)]
 struct Args {
     coin: String,
+
+    /// Print 24hr price statistics
+    #[clap(short, long)]
+    all: bool,
 }
 
 #[tokio::main]
@@ -13,5 +18,9 @@ async fn main() {
 
     let client = Client::new();
 
-    client.ohlcv(args.coin).await;
+    if args.all {
+        client.statistics(args.coin).await;
+    } else {
+        client.price(args.coin).await;
+    }
 }
