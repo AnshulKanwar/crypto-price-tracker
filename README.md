@@ -8,3 +8,4 @@ A CLI to track cryptocurrecy prices
 - [ ] Refactor
 - [ ] Add other commands
 - [ ] Add Error Handling
+- [ ] Migrate to Coinmarketcap to get prices in INR 
